@@ -1,8 +1,7 @@
 from django.db import models
 
-class Menu(models.Model):
+class Item(models.Model):
     product = models.CharField("Product", max_length=120)
-    weight = models.CharField("Weight", max_length=120)
     cut_details = models.CharField("Cut Details", max_length=120)
     count = models.CharField("Count Per Kg", max_length=120)
     rate = models.CharField("Rate", max_length=120)
@@ -12,3 +11,6 @@ class Menu(models.Model):
                  ("no", "No")],
         max_length=120
         )
+
+    def __str__(self):
+        return self.product
