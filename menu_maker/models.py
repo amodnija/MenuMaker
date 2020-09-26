@@ -1,14 +1,14 @@
 from django.db import models
 
 class Menu(models.Model):
-    product = models.CharField("Product")
-    weight = models.CharField("Weight")
-    cut_details = models.CharFiels("Cut Details")
-    count = models.CharField("Count Per Kg")
-    rate = models.CharField("Rate")
+    product = models.CharField("Product", max_length=120)
+    weight = models.CharField("Weight", max_length=120)
+    cut_details = models.CharField("Cut Details", max_length=120)
+    count = models.CharField("Count Per Kg", max_length=120)
+    rate = models.CharField("Rate", max_length=120)
     availability = models.CharField(
         "Availibility", 
         choices=[("yes", "Yes"),
                  ("no", "No")],
-                                    
+        max_length=120
         )
