@@ -55,7 +55,7 @@ ROOT_URLCONF = 'online_menu_maker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'online_menu_maker/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
