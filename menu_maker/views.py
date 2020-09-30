@@ -1,4 +1,11 @@
 from django.shortcuts import render
+from .picgen import PicGen
 
-def HomePageView(request):
-    None
+def MenuDispView(request):
+    generator = PicGen()
+    generator.generate_pic()
+    return render(request, 
+            'menu_maker/menu_disp.html',
+            )
+
+
