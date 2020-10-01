@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Displaying current menu{% endblock title %}
 
 {% block content %}
     <h1>Current Menu:</h1>
-    <a href="#"><img src="menu.png" alt=""></a>
+    <a href="#"><img src="{% static 'menu.png' %}" alt=""></a>
 {% endblock content %}

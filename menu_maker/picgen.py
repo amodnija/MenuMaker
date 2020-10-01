@@ -32,7 +32,7 @@ class PicGen:
                            {'selector':'tr:last-of-type',
                             'props':[('border-bottom','1px solid black')]}]
         self.valid_columns = ["product", "cut_details", "count", "rate"]
-        self.source = os.path.join(BASE_DIR, "menu_maker/templates/menu_maker/menu.png")
+        self.source = os.path.join(BASE_DIR, 'online_menu_maker/static/menu.png')
 
     def _refine_db(self):
         self.raw_df.columns = [label.lower().strip() for label in self.raw_df.columns]
