@@ -10,7 +10,7 @@ class PicGen:
         self.raw_file = os.path.join(BASE_DIR, 'db.sqlite3')
         self.conn = sqlite3.connect(self.raw_file)
         self.raw_df = pd.read_sql_query("select * from menu_maker_item;",self.conn)
-        self.convert_dict = {"Rate" : "str",
+        self.convert_dict = {"Rate(Rs.)" : "str",
                              "Count Per Kg" : "str"}
         self.style_list = [{'selector':'table .dataframe',
                             'props':[('table-layout','fixed'),
@@ -45,7 +45,7 @@ class PicGen:
         self.filt_df.drop(columns=self.drop_list, inplace=True)
         self.filt_df.columns = [label.title() for label in self.filt_df.columns]
         self.filt_df.reset_index(inplace=True, drop=True)                
-        self.filt_df.columns = ["Product", "Cut Details", "Count Per Kg", "Rate"]
+        self.filt_df.columns = ["Product", "Cut Details", "Count Per Kg", "Rate(Rs.)"]
         self.filt_df = self.filt_df.astype(self.convert_dict, errors='ignore')
 
     def _style_df(self):

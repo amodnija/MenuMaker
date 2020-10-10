@@ -4,20 +4,25 @@
     <head>    
     <meta charset="utf-8">
         <title>
-            {% block title %}
-            {{ page_title|default:"Untitled Page" }}
-            {% endblock title %}
+            Online Menu Maker
         </title>
     </head>
     <body>
         <header id="header">
             Online Menu Maker
-            <a href="/edit" class="btn">Edit Images</a>
             <a href="/admin" class="btn">Edit Menu</a>
-            <a href="/" class="btn">View Menu</a>
         </header>
-        {% block content %}
-            <p>Placeholder text in base template. Replace with page content.</p>
-        {% endblock content %}
+      
+    <form method="post" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        Choose Images:
+        <input type="file" name="img1" class="button">
+        <input type="file" name="img2" class="button">
+        <input type="file" name="img3" class="button">
+        <button type="submit">Upload Selected Images</button>
+    </form>
+    <h1>Current Menu:</h1>
+    <a href="#"><img src="{% static 'menu.jpg' %}" alt=""></a>
+       
     </body>
 </html>
