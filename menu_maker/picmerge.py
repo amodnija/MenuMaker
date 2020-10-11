@@ -3,7 +3,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class PicMerge:
-    def __init__(self, img1loc, img2loc, img3loc):
+    def __init__(self, img1loc, img2loc, img3loc, mod):
         self.menu_df = Image.open(os.path.join(
             BASE_DIR, 'online_menu_maker/static/menu.png'))
         self.header = Image.open(os.path.join(
@@ -17,16 +17,17 @@ class PicMerge:
         self.header_ratio = self.header.size[1]/self.header.size[0]
         self.loc = os.path.join(
             BASE_DIR, 'online_menu_maker/static/menu.jpg')
-    
+        self.mod = float(mod)
+
     def _prep_images(self):
         self.header = self.header.resize((self.menu_size[0],\
            int(self.menu_size[0]*self.header_ratio)))
         self.disp_image1 = self.disp_image1.resize((self.menu_size[0]//3,\
-             int(self.menu_size[1]//3)))
+             int(self.mod*self.menu_size[1]//3)))
         self.disp_image2 = self.disp_image2.resize((self.menu_size[0]//3,\
-             int(self.menu_size[1]//3)))        
+             int(self.mod*self.menu_size[1]//3)))        
         self.disp_image3 = self.disp_image3.resize((self.menu_size[0]//3,\
-             int(self.menu_size[1]//3)))
+             int(self.mod*self.menu_size[1]//3)))
         self.bg_image_size = (self.menu_size[0],(self.menu_size[1]\
              + self.header.size[1] + self.disp_image1.size[1]))
         self.bg_image = Image.new("RGB", (self.bg_image_size))

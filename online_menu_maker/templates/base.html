@@ -3,27 +3,42 @@
 <html>
     <head>    
     <meta charset="utf-8">
-        <title>
-            Online Menu Maker
-        </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        Online Menu Maker
+    </title>
+    <link href="{% static 'main.css' %}" rel="stylesheet" type="text/css">
     </head>
     <body>
         <header id="header">
-            Online Menu Maker
-            <a href="/admin" class="btn">Edit Menu</a>
+            <h1>Online Menu Maker</h1>
+            <a href="/admin">Edit Menu</a>
         </header>
-      
-    <form method="post" enctype="multipart/form-data" action="">
+    <div id="main">
+    <form method="post" enctype="multipart/form-data" action="" id="form1">
         {% csrf_token %}
-        Choose Images:
-        <input type="file" name="img1" class="button">
-        <input type="file" name="img2" class="button">
-        <input type="file" name="img3" class="button">
-        <input type="range" min="0.5" max="3" step="0.1" value="1" class="button">
-        <button type="submit">Upload Selected Images</button>
+        Choose Images (if you wish to replace existing ones) :
+        <div id="imag">Image 1:
+        <input type="file" name="img1" class="button"></div>
+        <div id="imag">Image 2:
+        <input type="file" name="img2" class="button"></div>
+        <div id="imag">Image 3:
+        <input type="file" name="img3" class="button"></div>
+        <div id="imag"><button type="submit" class="button">Upload Selected Images</button></div>
     </form>
-    <h1>Current Menu:</h1>
-    <a href="#"><img src="{% static 'menu.jpg' %}" alt=""></a>
-       
+    <form method="post" action="" id="form2">
+        <div id="imag">Choose multiplier for image height (Default: X1, Min: X0.5, Max: X4):
+        <br><input type="range" name="mod" min="0.5" max="4" step="0.1" value="{{ value }}"></div>
+        <div id="imag">
+        <button type="submit" class="button">Modify image height
+        </button></div>
+        {% csrf_token %}
+    </form>
+        <h1>Current Menu:</h1>
+        <a href="#"><img src="{% static 'menu.jpg' %}" alt=""></a>
+        <div id="imag">
+            To save menu locally, right click image and click "Save Image As"
+        </div>
+    </div>
     </body>
 </html>
