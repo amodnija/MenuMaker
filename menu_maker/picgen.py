@@ -11,7 +11,7 @@ class PicGen:
         self.conn = sqlite3.connect(self.raw_file)
         self.raw_df = pd.read_sql_query("select * from menu_maker_item;",self.conn)
         self.convert_dict = {"Rate(Rs.)" : "str",
-                             "Count Per Kg" : "str"}
+                             "Net Weight" : "str"}
         self.style_list = [{'selector':'table .dataframe',
                             'props':[('table-layout','fixed'),
                                      ('width', '150%'),]},
@@ -31,7 +31,7 @@ class PicGen:
                                      ('font-size', '16px')]},
                            {'selector':'tr:last-of-type',
                             'props':[('border-bottom','1px solid black')]}]
-        self.valid_columns = ["product", "cut_details", "count", "rate"]
+        self.valid_columns = ["product", "net_wt", "rate"]
         self.source = os.path.join(BASE_DIR, 'online_menu_maker/static/menu.png')
 
     def _refine_db(self):
@@ -45,7 +45,7 @@ class PicGen:
         self.filt_df.drop(columns=self.drop_list, inplace=True)
         self.filt_df.columns = [label.title() for label in self.filt_df.columns]
         self.filt_df.reset_index(inplace=True, drop=True)                
-        self.filt_df.columns = ["Product", "Cut Details", "Count Per Kg", "Rate(Rs.)"]
+        self.filt_df.columns = ["Product", "Net Weight", "Rate(Rs.)"]
         self.filt_df = self.filt_df.astype(self.convert_dict, errors='ignore')
 
     def _style_df(self):

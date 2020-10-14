@@ -3,7 +3,7 @@ from .models import Item
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ("product","cut_details", "rate", "availability")
+    list_display = ("product", "net_wt", "availability")
     ordering = ('product', )
     search_fields = ('product', )
     
