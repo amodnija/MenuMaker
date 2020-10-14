@@ -17,8 +17,7 @@ class PicGen:
                                      ('width', '150%'),]},
                            {'selector':'th',
                             'props':[('text-align', 'left'),
-                                     ('background', 'white'),
-                                     ('border-top', '1px solid black'),
+                                     ('background', 'white'),                                     
                                      ('color', '297c60'),
                                      ('font-family', 'Noto sans, sans-serif'),
                                      ('font-weight', '600'),
@@ -29,8 +28,9 @@ class PicGen:
                                      ('color', '297c60'),
                                      ('font-family','Noto sans, sans-serif'),
                                      ('font-size', '16px')]},
-                           {'selector':'tr:last-of-type',
-                            'props':[('border-bottom','1px solid black')]}]
+                           {'selector': 'table, th, td',
+                            'props':[('border','1px solid black'),
+                                     ('border-collapse', 'collapse')]}]
         self.valid_columns = ["product", "net_wt", "rate"]
         self.source = os.path.join(BASE_DIR, 'online_menu_maker/static/menu.png')
 
